@@ -1,6 +1,8 @@
 package main
 
 import (
+	routers "web/routes"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,18 +21,8 @@ func main() {
 	// Book API, create book, get books by author,  get all books, delete book, update book get all book.
 	// We need to create service layer For book and author
 
+	// init gin
 	router := gin.Default()
-
-	v1 := router.Group("/api/v1")
-	{
-
-		v1.GET("/", func(ctx *gin.Context) {
-			ctx.JSON(200, gin.H{
-				"message": "Hi",
-			})
-		})
-
-	}
-
+	routers.RegisterTodoRoute(router)
 	router.Run()
 }
