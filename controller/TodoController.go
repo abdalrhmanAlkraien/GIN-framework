@@ -3,7 +3,7 @@ package todoController
 import (
 	"net/http"
 	"strconv"
-	todo "web/model"
+	todo "web/dto/request"
 	todoService "web/service"
 	response "web/util"
 

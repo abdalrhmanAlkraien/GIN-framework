@@ -2,7 +2,8 @@ package todoservice
 
 import (
 	"errors"
-	todo "web/model"
+	todo "web/dto/request"
+	repository "web/repository"
 )
 
 var todos []todo.Todo
@@ -20,6 +21,7 @@ func CreateNewTodo(request todo.Todo) {
 		request.Id = todos[len(todos)-1].Id + 1 // Mock ID generation
 	}
 
+	repository.CreateTodoRepository(request)
 	todos = append(todos, request)
 }
 

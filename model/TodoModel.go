@@ -1,7 +1,17 @@
-package todo
+package model
+
+import (
+	"gorm.io/gorm"
+)
 
 type Todo struct {
-	Id     int    `json:"id"`
-	Title  string `json:"title"`
-	Status string `json:"status"`
+	gorm.Model
+
+	// ID     string `gorm:"type:uuid;primaryKey"`
+	Title  string `gorm:"size:256;unique"`
+	Status string
+
+	// CreatedAt time.Time
+	// UpdatedAt time.Time
+	// DeletedAt gorm.DeletedAt `gorm:"index"`
 }
