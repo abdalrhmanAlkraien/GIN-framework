@@ -1,16 +1,15 @@
 package todoservice
 
 import (
-	"errors"
 	todo "web/dto/request"
 	repository "web/repository"
 )
 
 var todos []todo.Todo
 
-func GetTodos() []todo.Todo {
+func GetTodos() ([]*todo.Todo, error) {
 
-	return todos
+	return repository.GetAllTodos()
 }
 
 func CreateNewTodo(request todo.Todo) {
@@ -27,11 +26,5 @@ func CreateNewTodo(request todo.Todo) {
 
 func GetTodoById(id int) (*todo.Todo, error) {
 
-	for _, t := range todos {
-		if t.Id == id {
-			return &t, nil
-		}
-	}
-
-	return nil, errors.New("todo is not there")
+	return repository.GetTodoById(id)
 }

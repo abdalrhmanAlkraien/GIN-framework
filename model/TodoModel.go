@@ -10,7 +10,9 @@ type Todo struct {
 	// ID     string `gorm:"type:uuid;primaryKey"`
 	Title  string `gorm:"size:256;unique"`
 	Status string
+	UserId uint
 
+	user User
 	// CreatedAt time.Time
 	// UpdatedAt time.Time
 	// DeletedAt gorm.DeletedAt `gorm:"index"`

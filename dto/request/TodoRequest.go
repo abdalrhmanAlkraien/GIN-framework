@@ -1,4 +1,4 @@
-package todoRequest
+package request
 
 type Todo struct {
 	Id     int    `json:"id"`

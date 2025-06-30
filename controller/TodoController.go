@@ -26,8 +26,15 @@ func CreateTodoController(ctx *gin.Context) {
 
 func GetAllTodos(ctx *gin.Context) {
 
+	// var todos []todo.Todo
+
+	todos, error := todoService.GetTodos()
+
+	if error != nil {
+		ctx.JSON(http.StatusBadRequest, response.BuildErrorResponse(nil, http.StatusBadRequest, error.Error()))
+	}
 	ctx.JSON(http.StatusOK, response.BuildSuccessResponse(
-		todoService.GetTodos(), http.StatusOK, "success request"))
+		todos, http.StatusOK, "success request"))
 }
 
 func GetTodoById(ctx *gin.Context) {
@@ -48,7 +55,7 @@ func GetTodoById(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, response.BuildErrorResponse(nil, http.StatusInternalServerError, err.Error()))
 	} else {
-		ctx.JSON(http.StatusOK, response.BuildSuccessResponse(&todo, http.StatusCreated, "Todo has been created"))
+		ctx.JSON(http.StatusOK, response.BuildSuccessResponse(todo, http.StatusOK, "Success request"))
 	}
 
 }
