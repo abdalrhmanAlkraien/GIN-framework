@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func TodoMiddleware() gin.HandlerFunc {
+func UserMiddleware() gin.HandlerFunc {
 
 	return func(ctx *gin.Context) {
 

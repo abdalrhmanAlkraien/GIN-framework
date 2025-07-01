@@ -27,5 +27,6 @@ func main() {
 	// init gin
 	router := gin.Default()
 	routers.RegisterTodoRoute(router)
+	routers.RegisterUserRoute(router)
 	router.Run()
 }

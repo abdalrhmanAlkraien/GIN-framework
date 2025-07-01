@@ -1,4 +1,4 @@
-package todoroute
+package route
 
 import (
 	todoController "web/controller"

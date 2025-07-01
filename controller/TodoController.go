@@ -1,4 +1,4 @@
-package todoController
+package controller
 
 import (
 	"net/http"
