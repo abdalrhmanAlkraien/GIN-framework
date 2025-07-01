@@ -5,17 +5,14 @@ import (
 	repository "web/repository"
 )
 
-var todos []todo.Todo
-
 func GetTodos() ([]*todo.Todo, error) {
 
 	return repository.GetAllTodos()
 }
 
-func CreateNewTodo(request todo.Todo) {
+func CreateNewTodo(request todo.Todo) error {
 
-	repository.CreateTodoRepository(request)
-	todos = append(todos, request)
+	return repository.CreateTodoRepository(request)
 }
 
 func GetTodoById(id int) (*todo.Todo, error) {

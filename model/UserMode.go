@@ -15,5 +15,5 @@ type User struct {
 	Birthday     *time.Time
 	MemberNumber sql.NullString
 
-	todo []Todo
+	TODO []Todo
 }

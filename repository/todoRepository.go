@@ -9,14 +9,17 @@ import (
 	"github.com/jinzhu/copier"
 )
 
-func CreateTodoRepository(todo request.Todo) {
+func CreateTodoRepository(todo request.Todo) error {
 
 	var todoModel model.Todo
 
 	copier.Copy(&todoModel, &todo) // map the data from request to model
 	db := config.GetDatabaseConnection()
 
-	db.Create(&todoModel)
+	fmt.Println(todoModel)
+	result := db.Create(&todoModel)
+
+	return result.Error
 }
 
 func GetAllTodos() ([]*request.Todo, error) {

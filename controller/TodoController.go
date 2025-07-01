@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 	todo "web/dto/request"
@@ -19,7 +20,14 @@ func CreateTodoController(ctx *gin.Context) {
 		return // just for exist from function no need the gin here no expected return value.
 	}
 
-	todoService.CreateNewTodo(todo)
+	err := todoService.CreateNewTodo(todo)
+
+	if err != nil {
+
+		fmt.Println(err.Error())
+		ctx.JSON(http.StatusInternalServerError, response.BuildErrorResponse(nil, http.StatusInternalServerError, err.Error()))
+		return
+	}
 
 	ctx.JSON(http.StatusCreated, response.BuildSuccessResponse(nil, http.StatusCreated, "Todo has been created"))
 }

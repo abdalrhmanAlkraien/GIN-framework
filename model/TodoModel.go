@@ -12,7 +12,7 @@ type Todo struct {
 	Status string
 	UserId uint
 
-	user User
+	USER User `gorm:"foreignKey:UserId"`
 	// CreatedAt time.Time
 	// UpdatedAt time.Time
 	// DeletedAt gorm.DeletedAt `gorm:"index"`
