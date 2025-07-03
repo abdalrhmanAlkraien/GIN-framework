@@ -73,8 +73,9 @@ func GetTodoByUserId(userId int) ([]*request.Todo, error) {
 		return nil, err
 	}
 
-	var todosResponse []request.Todo
+	var todosResponse []*request.Todo
 
 	copier.Copy(&todosResponse, todos)
+
 	return todosResponse, nil
 }

@@ -23,7 +23,8 @@ func main() {
 	// We need to create service layer For book and author
 
 	// inti DB connection
-	config.DbConfig()
+	config.LoadEnvFile()
+	// config.DbConfig()
 	// init gin
 	router := gin.Default()
 	routers.RegisterTodoRoute(router)
