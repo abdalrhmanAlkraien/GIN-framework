@@ -62,3 +62,19 @@ func GetTodoById(id int) (*request.Todo, error) {
 	}
 
 }
+
+func GetTodoByUserId(userId int) ([]*request.Todo, error) {
+
+	var todos []model.Todo
+
+	db := config.GetDatabaseConnection()
+
+	if err := db.Where("user_id = ?", userId).Find(&todos).Error; err != nil {
+		return nil, err
+	}
+
+	var todosResponse []request.Todo
+
+	copier.Copy(&todosResponse, todos)
+	return todosResponse, nil
+}

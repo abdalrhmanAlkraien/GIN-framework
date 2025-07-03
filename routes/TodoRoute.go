@@ -15,6 +15,7 @@ func RegisterTodoRoute(r *gin.Engine) { //Engine use for register routes, but co
 		todoGroup.GET("/", GetAllTodo)
 		todoGroup.POST("/", CreateNewTodo)
 		todoGroup.GET("/:id", GetTodoById)
+		todoGroup.GET("/users/:id", GetTodoByUserId)
 	}
 
 }
@@ -32,4 +33,9 @@ func CreateNewTodo(c *gin.Context) {
 func GetTodoById(ctx *gin.Context) {
 
 	todoController.GetTodoById(ctx)
+}
+
+func GetTodoByUserId(ctx *gin.Context) {
+
+	todoController.GetTodoByUserId(ctx)
 }

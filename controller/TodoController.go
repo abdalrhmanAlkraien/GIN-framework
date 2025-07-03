@@ -67,3 +67,23 @@ func GetTodoById(ctx *gin.Context) {
 	}
 
 }
+
+func GetTodoByUserId(ctx *gin.Context) {
+
+	idParam, err := strconv.Atoi(ctx.Param("id"))
+
+	if err != nil {
+
+		println(err.Error())
+		ctx.JSON(http.StatusInternalServerError, response.BuildErrorResponse(nil, http.StatusInternalServerError, err.Error()))
+
+	}
+
+	todos, err := todoService.GetUserById(idParam)
+
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, response.BuildErrorResponse(nil, http.StatusInternalServerError, err.Error()))
+	} else {
+		ctx.JSON(http.StatusOK, response.BuildSuccessResponse(todos, http.StatusOK, "Success request"))
+	}
+}
